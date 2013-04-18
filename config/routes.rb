@@ -1,4 +1,28 @@
 Nutrientmanager::Application.routes.draw do
+  resources :allergies
+
+
+  resources :mealrecipes
+
+
+  resources :mealplans
+
+
+  resources :meals
+
+
+  resources :nutritionists
+
+
+  resources :clients
+
+
+  resources :recipes
+
+
+  resources :userprofiles
+
+
   authenticated :user do
     root :to => 'home#index'
   end

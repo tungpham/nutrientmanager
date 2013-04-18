@@ -6,6 +6,18 @@
   <%= f.input :email, :required => true %>
   <%= f.input :password, :required => true %>
   <%= f.input :password_confirmation, :required => true %>
+
+  <%# resource.build_userprofile %>
+  <%#= f.simple_fields_for :userprofile do |p| %>
+    <%#= p.input :firstname %>
+    <%#= p.input :lastname %>
+    <%#= p.input :gender, collection: ["F", "M"] %>
+    <%#= p.input :address %>
+    <%#= p.input :city %>
+    <%#= p.input :zipcode %>
+    <%#= p.input :phone %>
+  <%# end %>
+
   <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
 <% end %>
 <%= render "devise/shared/links" %>

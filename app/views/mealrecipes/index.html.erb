@@ -1,0 +1,25 @@
+<h1>Listing mealrecipes</h1>
+
+<table>
+  <tr>
+    <th>Meal</th>
+    <th>Recipe</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mealrecipes.each do |mealrecipe| %>
+  <tr>
+    <td><%= mealrecipe.meal_id %></td>
+    <td><%= mealrecipe.recipe_id %></td>
+    <td><%= link_to 'Show', mealrecipe %></td>
+    <td><%= link_to 'Edit', edit_mealrecipe_path(mealrecipe) %></td>
+    <td><%= link_to 'Destroy', mealrecipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mealrecipe', new_mealrecipe_path %>

@@ -1,4 +1,17 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<% if user_signed_in? %>
+    <% if current_user.has_role? :nutr %>
+        <p><%= link_to 'Manage Clients', clients_path, {:class => 'btn'} %></p>
+        <p><%= link_to 'Manage Recipes', recipes_path, {:class => 'btn'} %></p>
+        <p><%= link_to 'Manage Allergies', allergies_path, {:class => 'btn'} %></p>
+        <p><%= link_to 'Manage Meal Plan', '#', {:class => 'btn'} %></p>
+        <p><%= link_to 'Manage Formular', recipes_path, {:class => 'btn'} %></p>
+    <% elsif current_user.has_role? :client %>
+        <h4>My meal plan is as follow...</h4>
+    <% elsif current_user.has_role? :admin %>
+        <h4>Welcome super admin user</h4>
+    <% else %>
+        <p>Your role is undefined. Nothing to see here</p>
+    <% end %>
+<% else %>
+    <h4>Please log in to use the application</h4>
 <% end %>

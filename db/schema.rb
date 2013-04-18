@@ -11,7 +11,63 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412033827) do
+ActiveRecord::Schema.define(:version => 20130416035503) do
+
+  create_table "allergies", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "clientallergies", :force => true do |t|
+    t.integer  "client_id"
+    t.integer  "allergy_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "clients", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "nutritionist_id"
+  end
+
+  create_table "mealplans", :force => true do |t|
+    t.integer  "meal_id"
+    t.integer  "client_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mealrecipes", :force => true do |t|
+    t.integer  "meal_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "meals", :force => true do |t|
+    t.integer  "recipe_id"
+    t.integer  "amount"
+    t.string   "mealofday"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "nutritionists", :force => true do |t|
+    t.string   "something"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "recipes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +79,19 @@ ActiveRecord::Schema.define(:version => 20130412033827) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "userprofiles", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "gender"
+    t.string   "address"
+    t.string   "city"
+    t.integer  "zipcode"
+    t.string   "phone"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

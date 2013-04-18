@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Something:</b>
+  <%= @nutritionist.something %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @nutritionist.user_id %>
+</p>
+
+<br />
+<p><b>List of clients</b></p>
+<table class="table table-striped table-bordered table-hover table-condensed">
+  <tr>
+    <th>Name</th>
+    <th>Preference</th>
+    <th>Allergy</th>
+  </tr>
+  <% @nutritionist.clients do |c| %>
+    <tr>
+      <td><%= c.user.name %></td>
+      <td><%= c.preference %></td>
+      <td><%= c.allergy %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Edit', edit_nutritionist_path(@nutritionist) %> |
+<%= link_to 'Back', nutritionists_path %>
+
